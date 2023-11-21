@@ -101,31 +101,31 @@ export default function PlacesFormPage() {
         {preInput('Check in&out times','add check in and out times, remember to have some time window for cleaning the room between guests')}
         <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className="mt-2 -mb-1">Check in time</h3>
+            <h3 className="mt-2 -mb-1">Check in fecha</h3>
             <input type="text"
                    value={checkIn}
                    onChange={ev => setCheckIn(ev.target.value)}
                    placeholder="14"/>
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Check out time</h3>
+            <h3 className="mt-2 -mb-1">Check out fecha</h3>
             <input type="text"
                    value={checkOut}
                    onChange={ev => setCheckOut(ev.target.value)}
                    placeholder="11" />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Max number of guests</h3>
+            <h3 className="mt-2 -mb-1">Numero maximo huespedes</h3>
             <input type="number" value={maxGuests}
                    onChange={ev => setMaxGuests(ev.target.value)}/>
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Price per night</h3>
+            <h3 className="mt-2 -mb-1">Precio por noche</h3>
             <input type="number" value={price}
                    onChange={ev => setPrice(ev.target.value)}/>
           </div>
         </div>
-        <button className="primary my-4">Save</button>
+        <button className="primary my-4">Guardar</button>
       </form>
     </div>
   );

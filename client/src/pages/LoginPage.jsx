@@ -13,10 +13,10 @@ export default function LoginPage() {
     try {
       const {data} = await axios.post('/login', {email,password});
       setUser(data);
-      alert('Login successful');
+      alert('Login sastisfactorio');
       setRedirect(true);
     } catch (e) {
-      alert('Login failed');
+      alert('Login fallido');
     }
   }
 
@@ -27,7 +27,7 @@ export default function LoginPage() {
   return (
     <div className="mt-4 grow flex items-center justify-around">
       <div className="mb-64">
-        <h1 className="text-4xl text-center mb-4">Login</h1>
+        <h1 className="text-4xl text-center mb-4">Inicia Sesión</h1>
         <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
           <input type="email"
                  placeholder="your@email.com"
@@ -37,9 +37,9 @@ export default function LoginPage() {
                  placeholder="password"
                  value={password}
                  onChange={ev => setPassword(ev.target.value)} />
-          <button className="primary">Login</button>
+          <button className="primary">Ingresar</button>
           <div className="text-center py-2 text-gray-500">
-            Don't have an account yet? <Link className="underline text-black" to={'/register'}>Register now</Link>
+            Aún no tienes una cuenta? <Link className="underline text-black" to={'/register'}>Registrarme</Link>
           </div>
         </form>
       </div>
