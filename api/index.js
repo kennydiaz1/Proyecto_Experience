@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('./models/User.js');
+const User = require('./models/user.js');
 const Place = require('./models/Place.js');
 const Booking = require('./models/Booking.js');
 const cookieParser = require('cookie-parser');
@@ -145,6 +145,7 @@ app.post('/api/upload', photosMiddleware.array('photos', 100), async (req,res) =
 
 app.post('/api/places', (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
+  console.log('si entro');
   const {token} = req.cookies;
   const {
     title,address,addedPhotos,description,price,
