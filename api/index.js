@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:5173', 'https://1962-190-147-196-36.ngrok-free.app/'],
+  origin: true,
 }));
 
 async function uploadToS3(path, originalFilename, mimetype) {
