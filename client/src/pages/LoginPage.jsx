@@ -8,12 +8,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
   const {setUser} = useContext(UserContext);
+
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     try {
       const {data} = await axios.post('/login', {email,password});
       setUser(data);
-      alert('Login sastisfactorio');
+      alert('Login satisfactorio');
       setRedirect(true);
     } catch (e) {
       alert('Login fallido');
@@ -21,7 +22,7 @@ export default function LoginPage() {
   }
 
   if (redirect) {
-    return <Navigate to={'/'} />
+    return <Navigate to={'/'} />;
   }
 
   return (
@@ -30,16 +31,16 @@ export default function LoginPage() {
         <h1 className="text-4xl text-center mb-4">Inicia Sesión</h1>
         <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
           <input type="email"
-                 placeholder="your@email.com"
+                 placeholder="tu@email.com"
                  value={email}
                  onChange={ev => setEmail(ev.target.value)} />
           <input type="password"
-                 placeholder="password"
+                 placeholder="contraseña"
                  value={password}
                  onChange={ev => setPassword(ev.target.value)} />
           <button className="primary">Ingresar</button>
           <div className="text-center py-2 text-gray-500">
-            Aún no tienes una cuenta? <Link className="underline text-black" to={'/register'}>Registrarme</Link>
+            ¿Aún no tienes una cuenta? <Link className="underline text-black" to={'/register'}>Regístrate</Link>
           </div>
         </form>
       </div>
