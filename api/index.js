@@ -18,14 +18,14 @@ const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = 'fasefraw4r5r3wq45wdfgw34twdfg';
-const bucket = 'dawid-booking-app';
+const bucket = 'christian-bucket';
 
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://1962-190-147-196-36.ngrok-free.app/'],
 }));
 
 async function uploadToS3(path, originalFilename, mimetype) {
@@ -58,12 +58,12 @@ function getUserDataFromReq(req) {
   });
 }
 
-app.get('/api/test', (req,res) => {
+app.get('/test', (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   res.json('test ok');
 });
 
-app.post('/api/register', async (req,res) => {
+app.post('/register', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const {name,email,password} = req.body;
 
@@ -80,7 +80,7 @@ app.post('/api/register', async (req,res) => {
 
 });
 
-app.post('/api/login', async (req,res) => {
+app.post('/login', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const {email,password} = req.body;
   const userDoc = await User.findOne({email});
@@ -116,7 +116,7 @@ app.get('/profile', (req,res) => {
   }
 });
 
-app.post('api/logout', (req,res) => {
+app.post('/logout', (req,res) => {
   res.cookie('token', '').json(true);
 });
 
