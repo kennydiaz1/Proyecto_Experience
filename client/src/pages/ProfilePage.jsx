@@ -20,7 +20,7 @@ export default function ProfilePage() {
   }
 
   if (!ready) {
-    return 'Loading...';
+    return 'Cargando...';
   }
 
   if (ready && !user && !redirect) {
