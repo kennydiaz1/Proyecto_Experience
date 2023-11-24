@@ -18,7 +18,7 @@ const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = 'fasefraw4r5r3wq45wdfgw34twdfg';
-const bucket = 'christian-bucket';
+const bucket = 'christian2bucket';
 
 app.use(express.json());
 app.use(cookieParser());
@@ -32,8 +32,8 @@ async function uploadToS3(path, originalFilename, mimetype) {
   const client = new S3Client({
     region: 'us-east-1',
     credentials: {
-      accessKeyId: process.env.S3_ACCESS_KEY,
-      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+      accessKeyId: 'AKIAXBHEJJ252QQUUWXC',
+      secretAccessKey: '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',
     },
   });
   const parts = originalFilename.split('.');
@@ -162,7 +162,7 @@ app.post('/places', (req,res) => {
   });
 });
 
-app.get('/user-places', (req,res) => {
+app.get('api/user-places', (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const {token} = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
